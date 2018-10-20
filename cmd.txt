@@ -1,0 +1,98 @@
+sudo update-alternatives --config python
+
+Figured it out it was a combination of using python2, and my computer converting the config file into raw text with font and other weird stuff. Thanks for the help again – 
+
+
+1.error about python.h 
+
+echo "deb http://us.archive.ubuntu.com/ubuntu/ precise-updates main restricted" | sudo tee -a /etc/apt/sources.list.d/precise-updates.list 
+
+sudo apt-get update
+
+sudo apt-get install python3.5-dev
+
+sudo apt-get install python-dev
+
+2.install tensorflow in tx2(successful with v1.9 and v1.10 , including keras)
+
+download tenforflow xxx.whl file from nvidia server
+
+run sudo pip install xxx.whl
+
+3.error with install h5py(not test)
+
+sudo apt-get install libhdf5-dev
+
+sudo apt-get install python-h5py
+
+4.error with install scipy
+
+download sourcecode 
+
+sudo python setup.py build
+
+sudo python setup install
+
+5.error with install matplotlib
+
+sudo apt-get install python3.5-dev python3.5-tk tk-dev
+
+sudo apt-get install libfreetype6-dev g++
+
+pip install matplotlib
+
+6.no module named xxxx
+
+import sys
+sys.path.append('/home/nvidia/Downloads/tf_trt_models-master/tf_trt_models')
+
+7.switch max mode and open fengshan
+sudo nvpmodel -m 0
+
+sudo ~/jetson_clocks.sh
+
+
+
+sudo protoc /home/nvidia/Downloads/tf_trt_models-master/tf_trt_models/object_detection/protos/*.proto --python_out=/home/nvidia/Downloads/tf_trt_models-master/tf_trt_models/object_detection/models
+
+wget wget https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.3.0-linux-x86_64.zip
+
+ ./configure.py --python-exe=/usr/bin/python3 --cuda-root=/usr/local/cuda-9.0 --cudadrv-lib-dir=/usr/lib/aarch64-linux-gnu --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-py35 --boost-thread-libname=boost_thread --no-use-shipped-boost
+
+
+> class TftrtEngine inherits class TfEngine. see line 39, 40.
+
+oh i see , i just want to run TftrtEngine so annotate the  line 112-117 , but i got an other exception now
+
+
+
+
+
+
+argmax_matcher.proto
+bipartite_matcher.proto
+box_coder.proto
+box_predictor.proto
+eval.proto
+faster_rcnn.proto
+faster_rcnn_box_coder.proto
+grid_anchor_generator.proto
+hyperparams.proto
+image_resizer.proto
+input_reader.proto
+losses.proto
+matcher.proto
+mean_stddev_box_coder.proto
+model.proto
+optimizer.proto
+pipeline.proto
+post_processing.proto
+preprocessor.proto
+region_similarity_calculator.proto
+square_box_coder.proto
+ssd.proto
+ssd_anchor_generator.proto
+string_int_label_map.proto
+train.proto
+
+ 
